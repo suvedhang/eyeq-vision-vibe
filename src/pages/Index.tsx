@@ -1,7 +1,7 @@
 import { useState } from "react";
 import RotatingText from "@/components/RotatingText";
 import StarBorder from "@/components/StarBorder";
-import ParticleBackground from "@/components/ParticleBackground";
+
 import ScrollReveal from "@/components/ScrollReveal";
 import BannerModal from "@/components/BannerModal";
 import eyeqLogo from "@/assets/eyeq-logo.png";
@@ -76,7 +76,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <ParticleBackground />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-4 z-10">

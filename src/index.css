@@ -17,7 +17,7 @@ All colors MUST be HSL.
     --popover: 0 0% 8%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 188 100% 50%;
+    --primary: 0 0% 85%;
     --primary-foreground: 0 0% 0%;
 
     --secondary: 0 0% 15%;
@@ -26,7 +26,7 @@ All colors MUST be HSL.
     --muted: 0 0% 20%;
     --muted-foreground: 0 0% 60%;
 
-    --accent: 188 100% 50%;
+    --accent: 0 0% 75%;
     --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
@@ -34,13 +34,11 @@ All colors MUST be HSL.
 
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 188 100% 50%;
+    --ring: 0 0% 80%;
 
     --radius: 0.75rem;
 
-    /* Custom cyan shades */
-    --cyan-glow: 188 100% 50%;
-    --cyan-bright: 188 100% 60%;
+    /* Custom grey shades */
     --grey-dark: 0 0% 10%;
     --grey-medium: 0 0% 40%;
     --grey-light: 0 0% 70%;

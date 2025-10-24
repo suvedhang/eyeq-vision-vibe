@@ -21,10 +21,10 @@ const StarBorder = ({
   const borderRef = useRef<HTMLDivElement>(null);
 
   const colorMap: Record<string, string> = {
-    cyan: "hsl(188, 100%, 50%)",
-    blue: "hsl(217, 91%, 60%)",
-    purple: "hsl(271, 91%, 65%)",
-    pink: "hsl(329, 86%, 70%)",
+    cyan: "hsl(0, 0%, 70%)",
+    blue: "hsl(0, 0%, 70%)",
+    purple: "hsl(0, 0%, 70%)",
+    pink: "hsl(0, 0%, 70%)",
   };
 
   const selectedColor = colorMap[color] || colorMap.cyan;

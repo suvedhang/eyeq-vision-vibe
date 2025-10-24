@@ -47,7 +47,7 @@ const ParticleBackground = () => {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(0, 229, 255, 0.5)";
+        ctx.fillStyle = "rgba(180, 180, 180, 0.3)";
         ctx.fill();
 
         // Draw connections
@@ -60,7 +60,7 @@ const ParticleBackground = () => {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `rgba(0, 229, 255, ${0.2 * (1 - distance / 120)})`;
+            ctx.strokeStyle = `rgba(180, 180, 180, ${0.15 * (1 - distance / 120)})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }
