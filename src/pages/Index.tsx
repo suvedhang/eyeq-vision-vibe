@@ -75,7 +75,12 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
+      {/* Background Image */}
+      <div 
+        className="fixed inset-0 z-0 opacity-5 bg-center bg-no-repeat bg-cover"
+        style={{ backgroundImage: 'url(/bg-logo.png)' }}
+      />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-4 z-10">
