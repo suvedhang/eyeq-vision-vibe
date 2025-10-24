@@ -2,6 +2,7 @@ import { useState } from "react";
 import RotatingText from "@/components/RotatingText";
 import StarBorder from "@/components/StarBorder";
 import TiltedCard from "@/components/TiltedCard";
+import SpotlightCard from "@/components/SpotlightCard";
 import ScrollReveal from "@/components/ScrollReveal";
 import BannerModal from "@/components/BannerModal";
 import eyeqLogo from "@/assets/eyeq-logo.png";
@@ -240,7 +241,10 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8">
             {teamMembers.map((member, index) => (
               <ScrollReveal key={index} delay={index * 100}>
-                <div className="bg-card border border-border rounded-lg p-8 hover:border-primary transition-all hover:scale-105 duration-300">
+                <SpotlightCard 
+                  className="bg-card border border-border rounded-lg p-8 transition-all duration-300"
+                  spotlightColor="rgba(180, 180, 180, 0.15)"
+                >
                   <div className="mb-4">
                     <h3 className="text-2xl font-bold text-primary">{member.name}</h3>
                     <p className="text-muted-foreground text-lg">{member.role}</p>
@@ -248,7 +252,7 @@ const Index = () => {
                   <p className="text-foreground italic leading-relaxed">
                     "{member.quote}"
                   </p>
-                </div>
+                </SpotlightCard>
               </ScrollReveal>
             ))}
           </div>
