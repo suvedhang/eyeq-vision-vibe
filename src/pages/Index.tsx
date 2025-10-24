@@ -1,7 +1,7 @@
 import { useState } from "react";
 import RotatingText from "@/components/RotatingText";
 import StarBorder from "@/components/StarBorder";
-
+import TiltedCard from "@/components/TiltedCard";
 import ScrollReveal from "@/components/ScrollReveal";
 import BannerModal from "@/components/BannerModal";
 import eyeqLogo from "@/assets/eyeq-logo.png";
@@ -205,14 +205,22 @@ const Index = () => {
                   description: "Always-on support from mentors and peers",
                 },
               ].map((benefit, index) => (
-                <div
-                  key={index}
-                  className="bg-card border border-border rounded-lg p-6 hover:border-primary transition-colors"
-                >
-                  <h3 className="text-xl font-bold mb-3 text-primary">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-muted-foreground">{benefit.description}</p>
+                <div key={index} className="flex justify-center">
+                  <TiltedCard
+                    containerHeight="280px"
+                    containerWidth="100%"
+                    imageHeight="280px"
+                    imageWidth="100%"
+                    rotateAmplitude={8}
+                    scaleOnHover={1.05}
+                    showTooltip={false}
+                    displayOverlayContent={false}
+                  >
+                    <h3 className="text-xl font-bold mb-3 text-primary">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-muted-foreground">{benefit.description}</p>
+                  </TiltedCard>
                 </div>
               ))}
             </div>
