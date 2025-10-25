@@ -98,9 +98,9 @@ const LightRays = ({
 
         const gradient = ctx.createLinearGradient(origin.x, origin.y, endX, endY);
         
-        const opacity = 0.15 + Math.sin(time + i * 0.5) * 0.1;
+        const opacity = 0.08 + Math.sin(time + i * 0.5) * 0.05;
         gradient.addColorStop(0, raysColor + Math.floor(opacity * 255).toString(16).padStart(2, '0'));
-        gradient.addColorStop(0.5, raysColor + '10');
+        gradient.addColorStop(0.5, raysColor + '08');
         gradient.addColorStop(1, raysColor + '00');
 
         ctx.strokeStyle = gradient;
