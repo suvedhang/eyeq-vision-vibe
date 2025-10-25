@@ -5,6 +5,7 @@ import TiltedCard from "@/components/TiltedCard";
 import SpotlightCard from "@/components/SpotlightCard";
 import ScrollReveal from "@/components/ScrollReveal";
 import BannerModal from "@/components/BannerModal";
+import LightRays from "@/components/LightRays";
 import eyeqLogo from "@/assets/eyeq-logo.png";
 import { Instagram, Linkedin, Phone } from "lucide-react";
 
@@ -77,6 +78,21 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
+      {/* 3D Light Rays Background */}
+      <div className="fixed inset-0 z-0">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+        />
+      </div>
+
       {/* Background Image */}
       <div 
         className="fixed inset-0 z-0 opacity-5 bg-center bg-no-repeat bg-cover"
