@@ -83,13 +83,15 @@ const Index = () => {
         <LightRays
           raysOrigin="top-center"
           raysColor="#ffffff"
-          raysSpeed={1.5}
-          lightSpread={0.8}
-          rayLength={1.2}
+          raysSpeed={1}
+          lightSpread={0.5}
+          rayLength={3}
+          fadeDistance={1}
+          saturation={1}
           followMouse={true}
           mouseInfluence={0.1}
-          noiseAmount={0.1}
-          distortion={0.05}
+          noiseAmount={0}
+          distortion={0}
         />
       </div>
 
