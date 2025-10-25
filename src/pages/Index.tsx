@@ -5,7 +5,9 @@ import TiltedCard from "@/components/TiltedCard";
 import SpotlightCard from "@/components/SpotlightCard";
 import ScrollReveal from "@/components/ScrollReveal";
 import BannerModal from "@/components/BannerModal";
-import LightRays from "@/components/LightRays";
+import MagicBento from "@/components/MagicBento";
+import GlassIcons from "@/components/GlassIcons";
+// import LightRays from "@/components/LightRays"; // REMOVED
 import eyeqLogo from "@/assets/eyeq-logo.png";
 import { Instagram, Linkedin, Phone } from "lucide-react";
 
@@ -78,25 +80,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
-      {/* 3D Light Rays Background */}
-      <div className="fixed inset-0 z-0">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#ffffff"
-          raysSpeed={1}
-          lightSpread={0.5}
-          rayLength={3}
-          fadeDistance={1}
-          saturation={1}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0}
-          distortion={0}
-        />
-      </div>
+      {/* Light Rays Background REMOVED */}
 
-      {/* Background Image */}
-      <div 
+      {/* Background Image (Kept as before) */}
+      <div
         className="fixed inset-0 z-0 opacity-5 bg-center bg-no-repeat bg-cover"
         style={{ backgroundImage: 'url(/bg-logo.png)' }}
       />
@@ -166,21 +153,35 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-6">
             {features.map((feature, index) => (
               <ScrollReveal key={index} delay={index * 100}>
-                <StarBorder
-                  as="button"
-                  className="w-full p-8 text-left hover:scale-105 transition-transform duration-300 cursor-pointer"
-                  color="cyan"
-                  speed="5s"
-                  onClick={() => openModal(feature.title, feature.description)}
+                <MagicBento
+                  textAutoHide={true}
+                  enableStars={true}
+                  enableSpotlight={true}
+                  enableBorderGlow={true}
+                  enableTilt={true}
+                  enableMagnetism={true}
+                  clickEffect={true}
+                  spotlightRadius={300}
+                  particleCount={12}
+                  glowColor="132, 0, 255"
+                  className="bg-card border border-border"
                 >
-                  <h3 className="text-2xl font-bold mb-4 text-primary">
-                    {feature.title}
-                  </h3>
-                  <p className="text-foreground">
-                    {feature.description.substring(0, 120)}...
-                  </p>
-                  <p className="text-primary text-sm mt-4">Click to read more →</p>
-                </StarBorder>
+                  <StarBorder
+                    as="button"
+                    className="w-full p-8 text-left hover:scale-105 transition-transform duration-300 cursor-pointer bg-transparent"
+                    color="cyan"
+                    speed="5s"
+                    onClick={() => openModal(feature.title, feature.description)}
+                  >
+                    <h3 className="text-2xl font-bold mb-4 text-primary">
+                      {feature.title}
+                    </h3>
+                    <p className="text-foreground">
+                      {feature.description.substring(0, 120)}...
+                    </p>
+                    <p className="text-primary text-sm mt-4">Click to read more →</p>
+                  </StarBorder>
+                </MagicBento>
               </ScrollReveal>
             ))}
           </div>
@@ -225,21 +226,26 @@ const Index = () => {
                 },
               ].map((benefit, index) => (
                 <div key={index} className="flex justify-center">
-                  <TiltedCard
-                    containerHeight="280px"
-                    containerWidth="100%"
-                    imageHeight="280px"
-                    imageWidth="100%"
-                    rotateAmplitude={8}
-                    scaleOnHover={1.05}
-                    showTooltip={false}
-                    displayOverlayContent={false}
+                  <MagicBento
+                    textAutoHide={true}
+                    enableStars={true}
+                    enableSpotlight={true}
+                    enableBorderGlow={true}
+                    enableTilt={true}
+                    enableMagnetism={true}
+                    clickEffect={true}
+                    spotlightRadius={300}
+                    particleCount={12}
+                    glowColor="132, 0, 255"
+                    className="h-[280px] bg-card border border-border"
                   >
-                    <h3 className="text-xl font-bold mb-3 text-primary">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-muted-foreground">{benefit.description}</p>
-                  </TiltedCard>
+                    <div className="h-full flex flex-col justify-center p-6">
+                      <h3 className="text-xl font-bold mb-3 text-primary">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-muted-foreground">{benefit.description}</p>
+                    </div>
+                  </MagicBento>
                 </div>
               ))}
             </div>
@@ -259,18 +265,24 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-8">
             {teamMembers.map((member, index) => (
               <ScrollReveal key={index} delay={index * 100}>
-                <SpotlightCard 
-                  className="bg-card border border-border rounded-lg p-8 transition-all duration-300"
-                  spotlightColor="rgba(180, 180, 180, 0.15)"
-                >
-                  <div className="mb-4">
-                    <h3 className="text-2xl font-bold text-primary">{member.name}</h3>
-                    <p className="text-muted-foreground text-lg">{member.role}</p>
-                  </div>
-                  <p className="text-foreground italic leading-relaxed">
-                    "{member.quote}"
-                  </p>
-                </SpotlightCard>
+                <GlassIcons 
+                  items={[
+                    { 
+                      icon: <div className="p-8">
+                        <div className="mb-4">
+                          <h3 className="text-2xl font-bold text-white">{member.name}</h3>
+                          <p className="text-white/70 text-lg">{member.role}</p>
+                        </div>
+                        <p className="text-white/90 italic leading-relaxed">
+                          "{member.quote}"
+                        </p>
+                      </div>, 
+                      color: ["blue", "purple", "red", "green"][index], 
+                      label: member.name 
+                    }
+                  ]} 
+                  className="rounded-2xl"
+                />
               </ScrollReveal>
             ))}
           </div>
