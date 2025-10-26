@@ -61,19 +61,19 @@ const Index = () => {
         "My vision is to shape this club into a creative space where innovation meets collaboration... where every member learns, grows, and contributes to the ever-evolving world of AI and technology.",
     },
     {
-      name: "Hariharan R",
+      name: "Sasvanthu G",
       role: "Vice President",
       quote:
         "Leading with passion and purpose, I strive to create an environment where every idea is valued and every member feels empowered to push boundaries.",
     },
     {
-      name: "Priya K",
+      name: "Harsh Limkar N",
       role: "Secretary",
       quote:
         "Organization meets inspiration. My goal is to ensure our community runs smoothly while fostering meaningful connections and collaborative learning.",
     },
     {
-      name: "Rahul M",
+      name: "Suveanthan G",
       role: "Treasurer",
       quote:
         "Managing resources wisely to fuel innovation. Every project deserves the support it needs to transform ideas into reality.",
@@ -125,28 +125,75 @@ const Index = () => {
       </section>
 
       {/* Our Purpose Section */}
-      <section id="about" className="relative py-20 px-4 z-10">
-        <div className="max-w-6xl mx-auto">
+      <section id="about" className="relative py-32 px-4 z-10 overflow-hidden">
+        {/* Background Texture - Reduced opacity */}
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/2 to-transparent"></div>
+        
+        <div className="max-w-7xl mx-auto relative">
           <ScrollReveal>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="flex justify-center">
-                <img
-                  src={eyeqLogo}
-                  alt="EyeQ Club Logo"
-                  className="w-64 h-64 object-contain"
-                />
+            <div className="text-center">
+              {/* Logo */}
+              <div className="flex justify-center mb-12">
+                <div className="relative">
+                  <img
+                    src={eyeqLogo}
+                    alt="EyeQ Club Logo"
+                    className="w-80 h-80 object-contain hover:scale-105 transition-all duration-500 mx-auto"
+                  />
+                  {/* Reduced glowing effect */}
+                  <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl"></div>
+                </div>
               </div>
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
-                  Our Purpose
-                </h2>
-                <p className="text-lg text-foreground leading-relaxed">
-                  EyeQ is a Computer Vision Club that brings all domains under one space.
-                  The main aim is to bridge the gap between academics and real-world
-                  technical skills. We help students learn by doing through vibe coding
-                  sessions and hands-on projects to make learning fun, fearless, and
-                  future-ready.
+              
+              {/* Content */}
+              <div className="max-w-4xl mx-auto">
+                {/* Heading with Gradient Underline */}
+                <div className="mb-8">
+                  <h2 className="text-5xl md:text-6xl font-bold mb-4 text-primary leading-tight">
+                    Empowering Visionaries in Computer Vision
+                  </h2>
+                  <div className="h-1 w-32 bg-gradient-to-r from-primary to-purple-500 rounded-full mx-auto"></div>
+                </div>
+                
+                {/* Mission Statement */}
+                <p className="text-xl text-foreground leading-relaxed mb-12 max-w-3xl mx-auto">
+                  EyeQ bridges the gap between learning and innovation through{" "}
+                  <span className="text-primary font-semibold">real-world projects</span>,{" "}
+                  <span className="text-primary font-semibold">mentorship</span>, and{" "}
+                  <span className="text-primary font-semibold">community</span>.
                 </p>
+                
+                {/* Animated Stats */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12 max-w-2xl mx-auto">
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-primary mb-2">50</div>
+                    <div className="text-sm text-muted-foreground">Active Members</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-primary mb-2">100</div>
+                    <div className="text-sm text-muted-foreground">Real-World Projects</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-primary mb-2">10</div>
+                    <div className="text-sm text-muted-foreground">Expert Mentors</div>
+                  </div>
+                </div>
+                
+                {/* Call to Action */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button 
+                    className="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
+                    onClick={() => openModal("Join EyeQ", "Ready to start your journey in Computer Vision? Join our community of innovators and learners!")}
+                  >
+                    Join Now
+                  </button>
+                  <button 
+                    className="border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105"
+                    onClick={() => openModal("Our Projects", "Explore the amazing projects our members have built using Computer Vision technologies!")}
+                  >
+                    See Our Projects
+                  </button>
+                </div>
               </div>
             </div>
           </ScrollReveal>
@@ -176,7 +223,7 @@ const Index = () => {
                   spotlightRadius={300}
                   particleCount={12}
                   glowColor="132, 0, 255"
-                  className="bg-card border border-border"
+                  className="bg-card border border-border hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl transition-all duration-300"
                 >
                   <StarBorder
                     as="button"
@@ -210,7 +257,7 @@ const Index = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {[
                 {
                   title: "Start from Zero, Grow Together",
@@ -249,13 +296,15 @@ const Index = () => {
                     spotlightRadius={300}
                     particleCount={12}
                     glowColor="132, 0, 255"
-                    className="h-[280px] bg-card border border-border"
+                    className="w-[300px] h-[200px] bg-card border border-border shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl"
                   >
-                    <div className="h-full flex flex-col justify-center p-6">
-                      <h3 className="text-xl font-bold mb-3 text-primary">
+                    <div className="w-full h-full flex flex-col justify-center items-center text-center p-6">
+                      <h3 className="text-lg font-bold mb-3 text-primary leading-tight">
                         {benefit.title}
                       </h3>
-                      <p className="text-muted-foreground">{benefit.description}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {benefit.description}
+                      </p>
                     </div>
                   </MagicBento>
                 </div>
@@ -269,32 +318,39 @@ const Index = () => {
       <section className="relative py-20 px-4 z-10">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-primary">
+            <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-primary">
               Meet the Core Team
             </h2>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
               <ScrollReveal key={index} delay={index * 100}>
-                <GlassIcons 
-                  items={[
-                    { 
-                      icon: <div className="p-8">
-                        <div className="mb-4">
-                          <h3 className="text-2xl font-bold text-white">{member.name}</h3>
-                          <p className="text-white/70 text-lg">{member.role}</p>
-                        </div>
-                        <p className="text-white/90 italic leading-relaxed">
-                          "{member.quote}"
-                        </p>
-                      </div>, 
-                      color: ["blue", "purple", "red", "green"][index], 
-                      label: member.name 
-                    }
-                  ]} 
-                  className="rounded-2xl"
-                />
+                <div className="bg-card border border-border rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center hover:scale-105 cursor-pointer h-[400px] flex flex-col justify-between hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl">
+                  {/* Circular Profile Picture Placeholder */}
+                  <div className="w-24 h-24 mx-auto mb-6 bg-gray-200 rounded-full flex items-center justify-center">
+                    <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center">
+                      <span className="text-gray-600 text-2xl font-semibold">
+                        {member.name.split(' ').map(n => n[0]).join('')}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Team Member Info */}
+                  <div className="flex-1 flex flex-col justify-center">
+                    <h3 className="text-xl font-semibold text-primary mb-2">
+                      {member.name}
+                    </h3>
+                    <p className="text-muted-foreground text-sm font-medium mb-4">
+                      {member.role}
+                    </p>
+                    
+                    {/* Member Quote */}
+                    <p className="text-sm text-muted-foreground italic leading-relaxed">
+                      "{member.quote}"
+                    </p>
+                  </div>
+                </div>
               </ScrollReveal>
             ))}
           </div>
