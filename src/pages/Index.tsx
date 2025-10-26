@@ -12,6 +12,7 @@ import eyeqLogo from "@/assets/eyeq-logo.png";
 import { Instagram, Linkedin, Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
+import TeamMember from "@/components/TeamMember";
 
 interface ModalContent {
   title: string;
@@ -59,24 +60,32 @@ const Index = () => {
       role: "President",
       quote:
         "My vision is to shape this club into a creative space where innovation meets collaboration... where every member learns, grows, and contributes to the ever-evolving world of AI and technology.",
+      imageUrl: "/team/President.JPG",
+      linkedinUrl: "https://www.linkedin.com/in/aswath-s-a37475336/",
     },
     {
       name: "Sasvanthu G",
       role: "Vice President",
       quote:
         "Leading with passion and purpose, I strive to create an environment where every idea is valued and every member feels empowered to push boundaries.",
+      imageUrl: "/team/Vice President.jpg",
+      linkedinUrl: "http://www.linkedin.com/in/sasvanthu-g",
     },
     {
       name: "Harsh Limkar N",
       role: "Secretary",
       quote:
         "Organization meets inspiration. My goal is to ensure our community runs smoothly while fostering meaningful connections and collaborative learning.",
+      imageUrl: "/team/Secretary.jpg",
+      linkedinUrl: "https://www.linkedin.com/in/harsh-limkar/",
     },
     {
       name: "Suvedhan G",
       role: "Treasurer",
       quote:
         "Managing resources wisely to fuel innovation. Every project deserves the support it needs to transform ideas into reality.",
+      imageUrl: "/team/Treasurer.jpg",
+      linkedinUrl: "https://www.linkedin.com/in/suvedhan-g-284290389/",
     },
   ];
 
@@ -326,29 +335,39 @@ const Index = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
               <ScrollReveal key={index} delay={index * 100}>
-                <div className="bg-card border border-border rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center hover:scale-105 cursor-pointer h-[400px] flex flex-col justify-between hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl">
-                  {/* Circular Profile Picture Placeholder */}
-                  <div className="w-24 h-24 mx-auto mb-6 bg-gray-200 rounded-full flex items-center justify-center">
-                    <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center">
-                      <span className="text-gray-600 text-2xl font-semibold">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </span>
+                <TeamMember
+                  name={member.name}
+                  role={member.role}
+                  imageUrl={member.imageUrl}
+                  linkedinUrl={member.linkedinUrl}
+                />
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Member Quotes */}
+      <section className="relative py-20 px-4 z-10 bg-muted/30">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 gap-8">
+            {teamMembers.map((member, index) => (
+              <ScrollReveal key={index} delay={index * 100}>
+                <div className="bg-card border border-border rounded-lg shadow-lg p-8 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl transition-all duration-300">
+                  <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+                    <div className="flex-1 flex flex-col justify-center">
+                      <h3 className="text-xl font-semibold text-primary mb-2">
+                        {member.name}
+                      </h3>
+                      <p className="text-muted-foreground text-sm font-medium mb-4">
+                        {member.role}
+                      </p>
+                      
+                      {/* Member Quote */}
+                      <p className="text-sm text-muted-foreground italic leading-relaxed">
+                        "{member.quote}"
+                      </p>
                     </div>
-                  </div>
-                  
-                  {/* Team Member Info */}
-                  <div className="flex-1 flex flex-col justify-center">
-                    <h3 className="text-xl font-semibold text-primary mb-2">
-                      {member.name}
-                    </h3>
-                    <p className="text-muted-foreground text-sm font-medium mb-4">
-                      {member.role}
-                    </p>
-                    
-                    {/* Member Quote */}
-                    <p className="text-sm text-muted-foreground italic leading-relaxed">
-                      "{member.quote}"
-                    </p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -389,7 +408,7 @@ const Index = () => {
               <div className="space-y-2 text-muted-foreground mb-6">
                 <p className="font-semibold text-foreground">Aswath S</p>
                 <p>+91 70949 25601</p>
-                <p>aswath10102006@gmail.com</p>
+                <p>eyeq.simats@gmail.com</p>
               </div>
               <div className="flex gap-4">
                 <a
