@@ -80,7 +80,7 @@ const Index = () => {
       linkedinUrl: "https://www.linkedin.com/in/harsh-limkar/",
     },
     {
-      name: "Suvedhan G",
+      name: "Suvendan G",
       role: "Treasurer",
       quote:
         "Managing resources wisely to fuel innovation. Every project deserves the support it needs to transform ideas into reality.",
@@ -444,6 +444,7 @@ const Index = () => {
 
           <div className="mt-8 pt-8 border-t border-border text-center text-muted-foreground">
             <p>© 2025 EyeQ Club. All rights reserved.</p>
+            <p className="mt-2 text-sm">Web developed by <a href="https://www.linkedin.com/in/gnana-priyan-g-b4a088389/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Gnana Priyan G</a></p>
           </div>
         </div>
       </footer>
