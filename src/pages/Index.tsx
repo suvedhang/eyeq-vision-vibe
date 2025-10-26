@@ -103,7 +103,7 @@ const Index = () => {
               staggerDuration={0.025}
               splitLevelClassName="overflow-hidden pb-1 md:pb-2"
               transition={{ type: "spring", damping: 30, stiffness: 400 }}
-              rotationInterval={2000}
+              rotationInterval={1500}
             />
           </div>
           <p className="text-xl md:text-2xl text-muted-foreground mt-6 animate-fade-in">
