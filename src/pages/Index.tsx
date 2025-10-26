@@ -10,6 +10,8 @@ import GlassIcons from "@/components/GlassIcons";
 // import LightRays from "@/components/LightRays"; // REMOVED
 import eyeqLogo from "@/assets/eyeq-logo.png";
 import { Instagram, Linkedin, Phone } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import { motion } from "framer-motion";
 
 interface ModalContent {
   title: string;
@@ -80,6 +82,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
+      {/* Navigation Bar */}
+      <Navbar />
+      
       {/* Light Rays Background REMOVED */}
 
       {/* Background Image (Kept as before) */}
@@ -89,10 +94,17 @@ const Index = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 z-10">
+      <section id="home" className="relative min-h-screen flex flex-col items-center justify-center px-4 z-10">
         <div className="text-center">
           <div className="flex items-center justify-center gap-4 mb-8">
-            <h1 className="text-6xl md:text-8xl font-bold text-foreground">EyeQ</h1>
+            <motion.h1 
+              className="text-6xl md:text-8xl font-bold text-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              EyeQ
+            </motion.h1>
             <RotatingText
               texts={["See", "Code", "Create"]}
               mainClassName="px-3 sm:px-4 md:px-6 bg-primary text-primary-foreground overflow-hidden py-2 sm:py-2 md:py-3 justify-center rounded-lg text-5xl md:text-7xl font-bold"
@@ -113,7 +125,7 @@ const Index = () => {
       </section>
 
       {/* Our Purpose Section */}
-      <section className="relative py-20 px-4 z-10">
+      <section id="about" className="relative py-20 px-4 z-10">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -290,7 +302,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="relative py-12 px-4 border-t border-border z-10">
+      <footer id="contact" className="relative py-12 px-4 border-t border-border z-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Column 1: Logo & Slogan */}
