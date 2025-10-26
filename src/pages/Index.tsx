@@ -73,7 +73,7 @@ const Index = () => {
         "Organization meets inspiration. My goal is to ensure our community runs smoothly while fostering meaningful connections and collaborative learning.",
     },
     {
-      name: "Suveanthan G",
+      name: "Suvedhan G",
       role: "Treasurer",
       quote:
         "Managing resources wisely to fuel innovation. Every project deserves the support it needs to transform ideas into reality.",
