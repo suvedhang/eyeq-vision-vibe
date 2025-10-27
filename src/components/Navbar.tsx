@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-scroll";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -19,12 +20,8 @@ const Navbar = ({ className }: NavbarProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
-    }
+  const handleNavClick = () => {
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -53,30 +50,33 @@ const Navbar = ({ className }: NavbarProps) => {
         </motion.div>
 
         <div className="hidden md:flex items-center gap-8">
-          <motion.button 
-            onClick={() => scrollToSection("home")} 
-            className="text-foreground hover:text-primary transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Home
-          </motion.button>
-          <motion.button 
-            onClick={() => scrollToSection("about")} 
-            className="text-foreground hover:text-primary transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            About
-          </motion.button>
-          <motion.button 
-            onClick={() => scrollToSection("contact")} 
-            className="text-foreground hover:text-primary transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Contact Us
-          </motion.button>
+          <Link to="home" smooth={true} duration={500}>
+            <motion.button 
+              className="text-foreground hover:text-primary transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Home
+            </motion.button>
+          </Link>
+          <Link to="about" smooth={true} duration={500}>
+            <motion.button 
+              className="text-foreground hover:text-primary transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              About
+            </motion.button>
+          </Link>
+          <Link to="contact" smooth={true} duration={500}>
+            <motion.button 
+              className="text-foreground hover:text-primary transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Contact Us
+            </motion.button>
+          </Link>
         </div>
 
         <div className="md:hidden">
@@ -135,30 +135,33 @@ const Navbar = ({ className }: NavbarProps) => {
               </svg>
             </motion.button>
             
-            <motion.button 
-              onClick={() => scrollToSection("home")} 
-              className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Home
-            </motion.button>
-            <motion.button 
-              onClick={() => scrollToSection("about")} 
-              className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              About
-            </motion.button>
-            <motion.button 
-              onClick={() => scrollToSection("contact")} 
-              className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Contact Us
-            </motion.button>
+            <Link to="home" smooth={true} duration={500} onClick={handleNavClick}>
+              <motion.button 
+                className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Home
+              </motion.button>
+            </Link>
+            <Link to="about" smooth={true} duration={500} onClick={handleNavClick}>
+              <motion.button 
+                className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                About
+              </motion.button>
+            </Link>
+            <Link to="contact" smooth={true} duration={500} onClick={handleNavClick}>
+              <motion.button 
+                className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contact Us
+              </motion.button>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

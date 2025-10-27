@@ -1,18 +1,17 @@
 import { useState } from "react";
+import { Link, Element } from "react-scroll";
 import RotatingText from "@/components/RotatingText";
 import StarBorder from "@/components/StarBorder";
-import TiltedCard from "@/components/TiltedCard";
-import SpotlightCard from "@/components/SpotlightCard";
 import ScrollReveal from "@/components/ScrollReveal";
 import BannerModal from "@/components/BannerModal";
 import MagicBento from "@/components/MagicBento";
-import GlassIcons from "@/components/GlassIcons";
 // import LightRays from "@/components/LightRays"; // REMOVED
 import eyeqLogo from "@/assets/eyeq-logo.png";
 import { Instagram, Linkedin, Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
 import TeamMember from "@/components/TeamMember";
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 interface ModalContent {
   title: string;
@@ -98,57 +97,75 @@ const Index = () => {
 
       {/* Background Image (Kept as before) */}
       <div
-        className="fixed inset-0 z-0 opacity-5 bg-center bg-no-repeat bg-cover"
+        className="fixed inset-0 z-0 opacity-5 bg-center bg-no-repeat bg-cover parallax"
         style={{ backgroundImage: 'url(/bg-logo.png)' }}
       />
 
       {/* Hero Section */}
+      <Element name="home">
       <section id="home" className="relative min-h-screen flex flex-col items-center justify-center px-4 z-10">
         <div className="text-center">
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <motion.h1 
-              className="text-6xl md:text-8xl font-bold text-foreground"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              EyeQ
-            </motion.h1>
-            <RotatingText
-              texts={["See", "Code", "Create"]}
-              mainClassName="px-3 sm:px-4 md:px-6 bg-primary text-primary-foreground overflow-hidden py-2 sm:py-2 md:py-3 justify-center rounded-lg text-5xl md:text-7xl font-bold"
-              staggerFrom="last"
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "-120%" }}
-              staggerDuration={0.025}
-              splitLevelClassName="overflow-hidden pb-1 md:pb-2"
-              transition={{ type: "spring", damping: 30, stiffness: 400 }}
-              rotationInterval={1500}
-            />
-          </div>
-          <p className="text-xl md:text-2xl text-muted-foreground mt-6 animate-fade-in">
-            Riding the Vibe Wave in Computer Vision!
-          </p>
+          <ScrollReveal animation="fade" delay={100} duration={900}>
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <h1 className="text-6xl md:text-8xl font-bold text-foreground">
+                EyeQ
+              </h1>
+              <RotatingText
+                texts={["See", "Code", "Create"]}
+                mainClassName="px-3 sm:px-4 md:px-6 bg-primary text-primary-foreground overflow-hidden py-2 sm:py-2 md:py-3 justify-center rounded-lg text-5xl md:text-7xl font-bold"
+                staggerFrom="last"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden pb-1 md:pb-2"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={1500}
+              />
+            </div>
+          </ScrollReveal>
+          <ScrollReveal animation="slide-up" delay={300} duration={900}>
+            <p className="text-xl md:text-2xl text-muted-foreground mt-6">
+              Riding the Vibe Wave in Computer Vision!
+            </p>
+          </ScrollReveal>
+          <ScrollReveal animation="slide-up" delay={500} duration={800}>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Link to="about" smooth={true} duration={500} className="hover-lift cursor-pointer">
+                <button className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all">
+                  Learn More
+                </button>
+              </Link>
+              <Link to="features" smooth={true} duration={500} className="hover-lift cursor-pointer">
+                <button className="px-8 py-3 bg-secondary text-secondary-foreground rounded-lg font-medium hover:bg-secondary/90 transition-all">
+                  Explore
+                </button>
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
+      </Element>
 
       {/* Our Purpose Section */}
+      <Element name="about">
       <section id="about" className="relative py-32 px-4 z-10 overflow-hidden">
         {/* Background Texture - Reduced opacity */}
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/2 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/2 to-transparent parallax"></div>
         
         <div className="max-w-7xl mx-auto relative">
-          <ScrollReveal>
+          <ScrollReveal animation="fade" duration={800}>
             <div className="text-center">
               {/* Logo */}
               <div className="flex justify-center mb-12">
                 <div className="relative">
-                  <img
-                    src={eyeqLogo}
-                    alt="EyeQ Club Logo"
-                    className="w-80 h-80 object-contain hover:scale-105 transition-all duration-500 mx-auto"
-                  />
+                  <ScrollReveal animation="scale" duration={1000} delay={200}>
+                    <img
+                      src={eyeqLogo}
+                      alt="EyeQ Club Logo"
+                      className="w-80 h-80 object-contain hover:scale-105 transition-all duration-500 mx-auto hover-lift"
+                    />
+                  </ScrollReveal>
                   {/* Reduced glowing effect */}
                   <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl"></div>
                 </div>
@@ -157,62 +174,80 @@ const Index = () => {
               {/* Content */}
               <div className="max-w-4xl mx-auto">
                 {/* Heading with Gradient Underline */}
-                <div className="mb-8">
-                  <h2 className="text-5xl md:text-6xl font-bold mb-4 text-primary leading-tight">
-                    Empowering Visionaries in Computer Vision
-                  </h2>
-                  <div className="h-1 w-32 bg-gradient-to-r from-primary to-purple-500 rounded-full mx-auto"></div>
-                </div>
+                <ScrollReveal animation="slide-up" delay={200} duration={900}>
+                  <div className="mb-8">
+                    <h2 className="text-5xl md:text-6xl font-bold mb-4 text-primary leading-tight">
+                      Empowering Visionaries in Computer Vision
+                    </h2>
+                    <div className="h-1 w-32 bg-gradient-to-r from-primary to-purple-500 rounded-full mx-auto"></div>
+                  </div>
+                </ScrollReveal>
                 
                 {/* Mission Statement */}
-                <p className="text-xl text-foreground leading-relaxed mb-12 max-w-3xl mx-auto">
-                  EyeQ bridges the gap between learning and innovation through{" "}
-                  <span className="text-primary font-semibold">real-world projects</span>,{" "}
-                  <span className="text-primary font-semibold">mentorship</span>, and{" "}
-                  <span className="text-primary font-semibold">community</span>.
-                </p>
+                <ScrollReveal animation="slide-up" delay={300} duration={900}>
+                  <p className="text-xl text-foreground leading-relaxed mb-12 max-w-3xl mx-auto">
+                    EyeQ bridges the gap between learning and innovation through{" "}
+                    <span className="text-primary font-semibold">real-world projects</span>,{" "}
+                    <span className="text-primary font-semibold">mentorship</span>, and{" "}
+                    <span className="text-primary font-semibold">community</span>.
+                  </p>
+                </ScrollReveal>
                 
                 {/* Animated Stats */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12 max-w-2xl mx-auto">
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-primary mb-2">50</div>
-                    <div className="text-sm text-muted-foreground">Active Members</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-primary mb-2">100</div>
-                    <div className="text-sm text-muted-foreground">Real-World Projects</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-4xl font-bold text-primary mb-2">10</div>
-                    <div className="text-sm text-muted-foreground">Expert Mentors</div>
-                  </div>
+                  <AnimatedSection delay={100}>
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-primary mb-2">50+</div>
+                      <div className="text-sm text-muted-foreground">Active Members</div>
+                    </div>
+                  </AnimatedSection>
+                  <AnimatedSection delay={300}>
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-primary mb-2">100+</div>
+                      <div className="text-sm text-muted-foreground">Real-World Projects</div>
+                    </div>
+                  </AnimatedSection>
+                  <AnimatedSection delay={500}>
+                    <div className="text-center">
+                      <div className="text-4xl font-bold text-primary mb-2">10+</div>
+                      <div className="text-sm text-muted-foreground">Expert Mentors</div>
+                    </div>
+                  </AnimatedSection>
                 </div>
                 
                 {/* Call to Action */}
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button 
-                    className="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
-                    onClick={() => openModal("Join EyeQ", "Ready to start your journey in Computer Vision? Join our community of innovators and learners!")}
-                  >
-                    Join Now
-                  </button>
-                  <button 
-                    className="border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105"
-                    onClick={() => openModal("Our Projects", "Explore the amazing projects our members have built using Computer Vision technologies!")}
-                  >
-                    See Our Projects
-                  </button>
-                </div>
+                <ScrollReveal animation="slide-up" delay={500} duration={900}>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a 
+                      href="https://chat.whatsapp.com/GxFFprWNX4d8mOQJOTz7d1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25 inline-block text-center"
+                    >
+                      Join Now
+                    </a>
+                    <a 
+                      href="https://docs.google.com/spreadsheets/d/1EVvQ9yxCOn4SqQX_twvwdRS9951wn6fNcUI7PZdMxYQ/edit?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105 inline-block text-center"
+                    >
+                      See Our Projects
+                    </a>
+                  </div>
+                </ScrollReveal>
               </div>
             </div>
           </ScrollReveal>
         </div>
       </section>
+      </Element>
 
       {/* What Makes EyeQ Different */}
+      <Element name="features">
       <section className="relative py-20 px-4 z-10">
         <div className="max-w-6xl mx-auto">
-          <ScrollReveal>
+          <ScrollReveal animation="fade" duration={800}>
             <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-primary">
               What Makes EyeQ Different?
             </h2>
@@ -220,7 +255,7 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             {features.map((feature, index) => (
-              <ScrollReveal key={index} delay={index * 100}>
+              <ScrollReveal key={index} animation="scale" delay={index * 100} duration={800}>
                 <MagicBento
                   textAutoHide={true}
                   enableStars={true}
@@ -255,6 +290,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+      </Element>
 
       {/* Student Benefits */}
       <section className="relative py-20 px-4 z-10">
@@ -326,7 +362,7 @@ const Index = () => {
       {/* Meet the Core Team */}
       <section className="relative py-20 px-4 z-10">
         <div className="max-w-6xl mx-auto">
-          <ScrollReveal>
+          <ScrollReveal animation="fade" duration={800}>
             <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-primary">
               Meet the Core Team
             </h2>
@@ -334,7 +370,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
-              <ScrollReveal key={index} delay={index * 100}>
+              <ScrollReveal key={index} delay={index * 100} animation="slide-up" duration={800}>
                 <TeamMember
                   name={member.name}
                   role={member.role}
@@ -352,7 +388,7 @@ const Index = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 gap-8">
             {teamMembers.map((member, index) => (
-              <ScrollReveal key={index} delay={index * 100}>
+              <ScrollReveal key={index} delay={index * 100} animation="slide-left" duration={800}>
                 <div className="bg-card border border-border rounded-lg shadow-lg p-8 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl transition-all duration-300">
                   <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
                     <div className="flex-1 flex flex-col justify-center">
@@ -377,77 +413,87 @@ const Index = () => {
       </section>
 
       {/* Footer */}
+      <Element name="contact">
       <footer id="contact" className="relative py-12 px-4 border-t border-border z-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Column 1: Logo & Slogan */}
-            <div className="flex flex-col items-center md:items-start">
-              <img
-                src={eyeqLogo}
-                alt="EyeQ Club Logo"
-                className="w-24 h-24 object-contain mb-4"
-              />
-              <p className="text-primary font-bold text-lg">See. Code. Create.</p>
-            </div>
+            <ScrollReveal animation="fade" duration={800}>
+              <div className="flex flex-col items-center md:items-start">
+                <img
+                  src={eyeqLogo}
+                  alt="EyeQ Club Logo"
+                  className="w-24 h-24 object-contain mb-4"
+                />
+                <p className="text-primary font-bold text-lg">See. Code. Create.</p>
+              </div>
+            </ScrollReveal>
 
             {/* Column 2: Address */}
-            <div>
-              <h3 className="text-xl font-bold mb-4 text-primary">Address</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Saveetha Institute of Medical and Technical Sciences
-                <br />
-                Saveetha Nagar, Thandalam
-                <br />
-                Chennai - 602 105
-              </p>
-            </div>
+            <ScrollReveal animation="slide-up" duration={800} delay={200}>
+              <div>
+                <h3 className="text-xl font-bold mb-4 text-primary">Address</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Saveetha Institute of Medical and Technical Sciences
+                  <br />
+                  Saveetha Nagar, Thandalam
+                  <br />
+                  Chennai - 602 105
+                </p>
+              </div>
+            </ScrollReveal>
 
             {/* Column 3: Contact */}
-            <div>
-              <h3 className="text-xl font-bold mb-4 text-primary">Get in Touch</h3>
-              <div className="space-y-2 text-muted-foreground mb-6">
-                <p className="font-semibold text-foreground">Aswath S</p>
-                <p>+91 70949 25601</p>
-                <p>eyeq.simats@gmail.com</p>
+            <ScrollReveal animation="slide-up" duration={800} delay={400}>
+              <div>
+                <h3 className="text-xl font-bold mb-4 text-primary">Get in Touch</h3>
+                <div className="space-y-2 text-muted-foreground mb-6">
+                  <p className="font-semibold text-foreground">Aswath S</p>
+                  <p>+91 70949 25601</p>
+                  <p>eyeq.simats@gmail.com</p>
+                </div>
+                <div className="flex gap-4">
+                  <a
+                    href="https://www.instagram.com/eyeq.simats/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary/80 transition-colors"
+                    aria-label="Instagram"
+                  >
+                    <Instagram size={28} />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/eyeq-simats/eyeqclub"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary/80 transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin size={28} />
+                  </a>
+                  <a
+                    href="https://wa.me/917094925601"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary/80 transition-colors"
+                    aria-label="WhatsApp"
+                  >
+                    <Phone size={28} />
+                  </a>
+                </div>
               </div>
-              <div className="flex gap-4">
-                <a
-                  href="https://instagram.com/eyeqclub"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:text-primary/80 transition-colors"
-                  aria-label="Instagram"
-                >
-                  <Instagram size={28} />
-                </a>
-                <a
-                  href="https://linkedin.com/company/eyeqclub"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:text-primary/80 transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={28} />
-                </a>
-                <a
-                  href="https://wa.me/917094925601"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:text-primary/80 transition-colors"
-                  aria-label="WhatsApp"
-                >
-                  <Phone size={28} />
-                </a>
-              </div>
-            </div>
+            </ScrollReveal>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-border text-center text-muted-foreground">
-            <p>© 2025 EyeQ Club. All rights reserved.</p>
-            <p className="mt-2 text-sm">Web developed by <a href="https://www.linkedin.com/in/gnana-priyan-g-b4a088389/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Gnana Priyan G</a></p>
-          </div>
+          <ScrollReveal animation="fade" duration={800} delay={600}>
+            <div className="mt-8 pt-8 border-t border-border text-center text-muted-foreground">
+              <p>© 2025 EyeQ Club. All rights reserved.</p>
+              <p className="mt-2 text-sm">Web developed by <a href="https://www.linkedin.com/in/gnana-priyan-g-b4a088389/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Gnana Priyan G</a></p>
+            </div>
+          </ScrollReveal>
         </div>
       </footer>
+      </Element>
 
       <BannerModal
         isOpen={modalOpen}
