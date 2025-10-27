@@ -1,73 +1,98 @@
-# Welcome to your Lovable project
+# EyeQ Club - Computer Vision Community at SIMATS
 
-## Project info
+Welcome to the EyeQ Club website, a student-run Computer Vision club at Saveetha Institute of Medical and Technical Sciences (SIMATS).
 
-**URL**: https://lovable.dev/projects/564989b4-8efc-4a7f-9b34-53ea25299f0e
+## About EyeQ
 
-## How can I edit this code?
+EyeQ is a vibrant community where students come together to learn, create, and innovate in the field of Computer Vision. Our mission is to bridge the gap between academic learning and real-world tech skills through collaborative projects and hands-on coding sessions.
 
-There are several ways of editing your application.
+### Our Motto
+**See. Code. Create.**
 
-**Use Lovable**
+## What Makes EyeQ Different?
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/564989b4-8efc-4a7f-9b34-53ea25299f0e) and start prompting.
+- **Anyone Can Teach One**: Every member is both a learner and a mentor
+- **No Skills Required**: Start your journey from zero with our supportive community
+- **Curiosity Over Competition**: We focus on exploration and innovation
+- **24/7 Energy Loop**: A community that's always active and always learning
 
-Changes made via Lovable will be committed automatically to this repo.
+## Tech Stack
 
-**Use your preferred IDE**
+This project is built with modern web technologies:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **React 18** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Styling
+- **Framer Motion** - Animations
+- **Shadcn UI** - Component library
+- **React Scroll** - Smooth scrolling
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Getting Started
 
-Follow these steps:
+### Prerequisites
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Node.js 18+ 
+- npm or pnpm or bun
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Installation
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd eyeq-vision-vibe
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open your browser and navigate to `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Available Scripts
 
-**Use GitHub Codespaces**
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/     # React components
+│   ├── ui/        # Shadcn UI components
+│   └── *.tsx      # Custom components
+├── pages/         # Page components
+├── hooks/         # Custom React hooks
+├── lib/           # Utility functions
+└── assets/        # Static assets
+```
 
-This project is built with:
+## Contact & Links
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **WhatsApp**: Join our [WhatsApp Group](https://chat.whatsapp.com/GxFFprWNX4d8mOQJOTz7d1)
+- **Projects**: View our [Project List](https://docs.google.com/spreadsheets/d/1EVvQ9yxCOn4SqQX_twvwdRS9951wn6fNcUI7PZdMxYQ/edit?usp=sharing)
+- **Instagram**: [@eyeq.simats](https://www.instagram.com/eyeq.simats/)
+- **LinkedIn**: [EyeQ SIMATS](https://www.linkedin.com/company/eyeq-simats/)
 
-## How can I deploy this project?
+## Development Team
 
-Simply open [Lovable](https://lovable.dev/projects/564989b4-8efc-4a7f-9b34-53ea25299f0e) and click on Share -> Publish.
+**President**: Aswath S  
+**Vice President**: Sasvanthu G  
+**Secretary**: Harsh Limkar N  
+**Treasurer**: Suvendan G  
 
-## Can I connect a custom domain to my Lovable project?
+**Web Developer**: Gnana Priyan G
 
-Yes, you can!
+## License
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+This project is created and maintained by EyeQ Club for educational and community purposes.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+© 2025 EyeQ Club. All rights reserved.
