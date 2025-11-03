@@ -87,7 +87,7 @@ src/
 **President**: Aswath S  
 **Vice President**: Sasvanthu G  
 **Secretary**: Harsh Limkar N  
-**Treasurer**: Suvendan G  
+**Treasurer**: Suvedhan G  
 
 **Web Developer**: Gnana Priyan G
 

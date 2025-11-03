@@ -79,7 +79,7 @@ const Index = () => {
       linkedinUrl: "https://www.linkedin.com/in/harsh-limkar/",
     },
     {
-      name: "Suvendan G",
+      name: "Suvedhan G",
       role: "Treasurer",
       quote:
         "Managing resources wisely to fuel innovation. Every project deserves the support it needs to transform ideas into reality.",
