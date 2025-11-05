@@ -9,7 +9,7 @@ import MagicBento from "@/components/MagicBento";
 import eyeqLogo from "@/assets/eyeq-logo.png";
 import { Instagram, Linkedin, Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import TeamMember from "@/components/TeamMember";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
@@ -88,6 +88,25 @@ const Index = () => {
     },
   ];
 
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1, // This creates the stagger effect
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 100 }
+    },
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
       {/* Navigation Bar */}
@@ -132,14 +151,22 @@ const Index = () => {
           <ScrollReveal animation="slide-up" delay={500} duration={800}>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link to="about" smooth={true} duration={500} className="hover-lift cursor-pointer">
-                <button className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all">
+                <motion.button 
+                  className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   Learn More
-                </button>
+                </motion.button>
               </Link>
               <Link to="features" smooth={true} duration={500} className="hover-lift cursor-pointer">
-                <button className="px-8 py-3 bg-secondary text-secondary-foreground rounded-lg font-medium hover:bg-secondary/90 transition-all">
+                <motion.button 
+                  className="px-8 py-3 bg-secondary text-secondary-foreground rounded-lg font-medium hover:bg-secondary/90 transition-all"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   Explore
-                </button>
+                </motion.button>
               </Link>
             </div>
           </ScrollReveal>
@@ -301,61 +328,65 @@ const Index = () => {
             </h2>
           </ScrollReveal>
 
-          <ScrollReveal delay={200}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {[
-                {
-                  title: "Start from Zero, Grow Together",
-                  description: "Safe, beginner-friendly peer learning environment",
-                },
-                {
-                  title: "Vibe Coding Sessions",
-                  description: "Chill, fun coding with a community focus",
-                },
-                {
-                  title: "Idea to Innovations",
-                  description: "Guiding curiosity into real projects",
-                },
-                {
-                  title: "Mini-Projects & Hackathons",
-                  description: "Quick skill-building through small challenges",
-                },
-                {
-                  title: "Building Portfolio",
-                  description: "Create projects that showcase your skills",
-                },
-                {
-                  title: "24/7 Community Support",
-                  description: "Always-on support from mentors and peers",
-                },
-              ].map((benefit, index) => (
-                <div key={index} className="flex justify-center">
-                  <MagicBento
-                    textAutoHide={true}
-                    enableStars={true}
-                    enableSpotlight={true}
-                    enableBorderGlow={true}
-                    enableTilt={true}
-                    enableMagnetism={true}
-                    clickEffect={true}
-                    spotlightRadius={300}
-                    particleCount={12}
-                    glowColor="132, 0, 255"
-                    className="w-[300px] h-[200px] bg-card border border-border shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl"
-                  >
-                    <div className="w-full h-full flex flex-col justify-center items-center text-center p-6">
-                      <h3 className="text-lg font-bold mb-3 text-primary leading-tight">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {benefit.description}
-                      </p>
-                    </div>
-                  </MagicBento>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
+          <motion.div 
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {[
+              {
+                title: "Start from Zero, Grow Together",
+                description: "Safe, beginner-friendly peer learning environment",
+              },
+              {
+                title: "Vibe Coding Sessions",
+                description: "Chill, fun coding with a community focus",
+              },
+              {
+                title: "Idea to Innovations",
+                description: "Guiding curiosity into real projects",
+              },
+              {
+                title: "Mini-Projects & Hackathons",
+                description: "Quick skill-building through small challenges",
+              },
+              {
+                title: "Building Portfolio",
+                description: "Create projects that showcase your skills",
+              },
+              {
+                title: "24/7 Community Support",
+                description: "Always-on support from mentors and peers",
+              },
+            ].map((benefit, index) => (
+              <motion.div key={index} variants={itemVariants} className="flex justify-center">
+                <MagicBento
+                  textAutoHide={true}
+                  enableStars={true}
+                  enableSpotlight={true}
+                  enableBorderGlow={true}
+                  enableTilt={true}
+                  enableMagnetism={true}
+                  clickEffect={true}
+                  spotlightRadius={300}
+                  particleCount={12}
+                  glowColor="132, 0, 255"
+                  className="w-[300px] h-[200px] bg-card border border-border shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl"
+                >
+                  <div className="w-full h-full flex flex-col justify-center items-center text-center p-6">
+                    <h3 className="text-lg font-bold mb-3 text-primary leading-tight">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {benefit.description}
+                    </p>
+                  </div>
+                </MagicBento>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -386,29 +417,33 @@ const Index = () => {
       {/* Team Member Quotes */}
       <section className="relative py-20 px-4 z-10 bg-muted/30">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 gap-8">
+          <motion.div 
+            className="grid grid-cols-1 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {teamMembers.map((member, index) => (
-              <ScrollReveal key={index} delay={index * 100} animation="slide-left" duration={800}>
-                <div className="bg-card border border-border rounded-lg shadow-lg p-8 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl transition-all duration-300">
-                  <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-                    <div className="flex-1 flex flex-col justify-center">
-                      <h3 className="text-xl font-semibold text-primary mb-2">
-                        {member.name}
-                      </h3>
-                      <p className="text-muted-foreground text-sm font-medium mb-4">
-                        {member.role}
-                      </p>
-                      
-                      {/* Member Quote */}
-                      <p className="text-sm text-muted-foreground italic leading-relaxed">
-                        "{member.quote}"
-                      </p>
-                    </div>
+              <motion.div key={index} variants={itemVariants} className="bg-card border border-border rounded-lg shadow-lg p-8 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl transition-all duration-300">
+                <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+                  <div className="flex-1 flex flex-col justify-center">
+                    <h3 className="text-xl font-semibold text-primary mb-2">
+                      {member.name}
+                    </h3>
+                    <p className="text-muted-foreground text-sm font-medium mb-4">
+                      {member.role}
+                    </p>
+                    
+                    {/* Member Quote */}
+                    <p className="text-sm text-muted-foreground italic leading-relaxed">
+                      "{member.quote}"
+                    </p>
                   </div>
                 </div>
-              </ScrollReveal>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -453,33 +488,36 @@ const Index = () => {
                   <p>eyeq.simats@gmail.com</p>
                 </div>
                 <div className="flex gap-4">
-                  <a
+                  <motion.a
                     href="https://www.instagram.com/eyeq.simats/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 transition-colors"
                     aria-label="Instagram"
+                    whileHover={{ scale: 1.1, y: -3, color: "hsl(var(--primary))" }}
+                    className="text-muted-foreground"
                   >
                     <Instagram size={28} />
-                  </a>
-                  <a
+                  </motion.a>
+                  <motion.a
                     href="https://www.linkedin.com/company/eyeq-simats/eyeqclub"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 transition-colors"
                     aria-label="LinkedIn"
+                    whileHover={{ scale: 1.1, y: -3, color: "hsl(var(--primary))" }}
+                    className="text-muted-foreground"
                   >
                     <Linkedin size={28} />
-                  </a>
-                  <a
+                  </motion.a>
+                  <motion.a
                     href="https://wa.me/917094925601"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 transition-colors"
                     aria-label="WhatsApp"
+                    whileHover={{ scale: 1.1, y: -3, color: "hsl(var(--primary))" }}
+                    className="text-muted-foreground"
                   >
                     <Phone size={28} />
-                  </a>
+                  </motion.a>
                 </div>
               </div>
             </ScrollReveal>
