@@ -7,39 +7,46 @@ import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import SplashScreen from "@/components/SplashScreen";
+import VideoSplashScreen from "@/components/VideoSplashScreen";
 
 const queryClient = new QueryClient();
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
   useEffect(() => {
+    // Additional fallback to ensure splash screen doesn't stay forever
     const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
+      if (isLoading) {
+        handleLoadingComplete();
+      }
+    }, 3000); // 3 seconds max
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [isLoading]);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AnimatePresence>
-        {isLoading && <SplashScreen />}
+      <AnimatePresence mode="wait">
+        {isLoading && <VideoSplashScreen onVideoEnd={handleLoadingComplete} />}
+        {!isLoading && (
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        )}
       </AnimatePresence>
-      {!isLoading && (
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      )}
     </QueryClientProvider>
   );
 };

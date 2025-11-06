@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, Element } from "react-scroll";
 import RotatingText from "@/components/RotatingText";
 import StarBorder from "@/components/StarBorder";
@@ -37,6 +37,16 @@ const Index = () => {
     title: "",
     description: "",
   });
+  const [showContent, setShowContent] = useState(false);
+
+  // Trigger content animation after component mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowContent(true);
+    }, 100); // Small delay to ensure smooth transition
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const openModal = (title: string, description: string) => {
     setModalContent({ title, description });
@@ -121,12 +131,15 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
+    <motion.div 
+      className="min-h-screen bg-background text-foreground overflow-x-hidden relative"
+      initial={{ opacity: 0 }}
+      animate={showContent ? { opacity: 1 } : {}}
+      transition={{ duration: 0.8 }}
+    >
       {/* Navigation Bar */}
       <Navbar />
       
-      {/* Light Rays Background REMOVED */}
-
       {/* Background Image (Kept as before) */}
       <div
         className="fixed inset-0 z-0 opacity-5 bg-center bg-no-repeat bg-cover parallax"
@@ -320,7 +333,6 @@ const Index = () => {
 
           <Carousel
             opts={{
-              slidesToShow: 1,
               slidesToScroll: 1,
               loop: true,
             }}
@@ -536,7 +548,7 @@ const Index = () => {
         title={modalContent.title}
         description={modalContent.description}
       />
-    </div>
+    </motion.div>
   );
 };
 
