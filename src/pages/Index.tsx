@@ -12,6 +12,19 @@ import Navbar from "@/components/Navbar";
 import { motion, Variants } from "framer-motion";
 import TeamMember from "@/components/TeamMember";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface ModalContent {
   title: string;
@@ -280,41 +293,18 @@ const Index = () => {
             </h2>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
             {features.map((feature, index) => (
-              <ScrollReveal key={index} animation="scale" delay={index * 100} duration={800}>
-                <MagicBento
-                  textAutoHide={true}
-                  enableStars={true}
-                  enableSpotlight={true}
-                  enableBorderGlow={true}
-                  enableTilt={true}
-                  enableMagnetism={true}
-                  clickEffect={true}
-                  spotlightRadius={300}
-                  particleCount={12}
-                  glowColor="132, 0, 255"
-                  className="bg-card border border-border hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl transition-all duration-300"
-                >
-                  <StarBorder
-                    as="button"
-                    className="w-full p-8 text-left hover:scale-105 transition-transform duration-300 cursor-pointer bg-transparent"
-                    color="cyan"
-                    speed="5s"
-                    onClick={() => openModal(feature.title, feature.description)}
-                  >
-                    <h3 className="text-2xl font-bold mb-4 text-primary">
-                      {feature.title}
-                    </h3>
-                    <p className="text-foreground">
-                      {feature.description.substring(0, 120)}...
-                    </p>
-                    <p className="text-primary text-sm mt-4">Click to read more →</p>
-                  </StarBorder>
-                </MagicBento>
-              </ScrollReveal>
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="text-2xl font-bold text-left py-6 hover:no-underline">
+                  <span className="text-primary">{feature.title}</span>
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground pb-6">
+                  {feature.description}
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
         </div>
       </section>
       </Element>
@@ -328,65 +318,72 @@ const Index = () => {
             </h2>
           </ScrollReveal>
 
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+          <Carousel
+            opts={{
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              loop: true,
+            }}
+            className="w-full max-w-5xl mx-auto"
           >
-            {[
-              {
-                title: "Start from Zero, Grow Together",
-                description: "Safe, beginner-friendly peer learning environment",
-              },
-              {
-                title: "Vibe Coding Sessions",
-                description: "Chill, fun coding with a community focus",
-              },
-              {
-                title: "Idea to Innovations",
-                description: "Guiding curiosity into real projects",
-              },
-              {
-                title: "Mini-Projects & Hackathons",
-                description: "Quick skill-building through small challenges",
-              },
-              {
-                title: "Building Portfolio",
-                description: "Create projects that showcase your skills",
-              },
-              {
-                title: "24/7 Community Support",
-                description: "Always-on support from mentors and peers",
-              },
-            ].map((benefit, index) => (
-              <motion.div key={index} variants={itemVariants} className="flex justify-center">
-                <MagicBento
-                  textAutoHide={true}
-                  enableStars={true}
-                  enableSpotlight={true}
-                  enableBorderGlow={true}
-                  enableTilt={true}
-                  enableMagnetism={true}
-                  clickEffect={true}
-                  spotlightRadius={300}
-                  particleCount={12}
-                  glowColor="132, 0, 255"
-                  className="w-[300px] h-[200px] bg-card border border-border shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl"
-                >
-                  <div className="w-full h-full flex flex-col justify-center items-center text-center p-6">
-                    <h3 className="text-lg font-bold mb-3 text-primary leading-tight">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {benefit.description}
-                    </p>
+            <CarouselContent>
+              {[
+                {
+                  title: "Start from Zero, Grow Together",
+                  description: "Safe, beginner-friendly peer learning environment",
+                },
+                {
+                  title: "Vibe Coding Sessions",
+                  description: "Chill, fun coding with a community focus",
+                },
+                {
+                  title: "Idea to Innovations",
+                  description: "Guiding curiosity into real projects",
+                },
+                {
+                  title: "Mini-Projects & Hackathons",
+                  description: "Quick skill-building through small challenges",
+                },
+                {
+                  title: "Building Portfolio",
+                  description: "Create projects that showcase your skills",
+                },
+                {
+                  title: "24/7 Community Support",
+                  description: "Always-on support from mentors and peers",
+                },
+              ].map((benefit, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <MagicBento
+                      textAutoHide={true}
+                      enableStars={true}
+                      enableSpotlight={true}
+                      enableBorderGlow={true}
+                      enableTilt={true}
+                      enableMagnetism={true}
+                      clickEffect={true}
+                      spotlightRadius={300}
+                      particleCount={12}
+                      glowColor="132, 0, 255"
+                      className="w-full h-[200px] bg-card border border-border shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl"
+                    >
+                      <div className="w-full h-full flex flex-col justify-center items-center text-center p-6">
+                        <h3 className="text-lg font-bold mb-3 text-primary leading-tight">
+                          {benefit.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {benefit.description}
+                        </p>
+                      </div>
+                    </MagicBento>
                   </div>
-                </MagicBento>
-              </motion.div>
-            ))}
-          </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
         </div>
       </section>
 
