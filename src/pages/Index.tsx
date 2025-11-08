@@ -5,6 +5,7 @@ import StarBorder from "@/components/StarBorder";
 import ScrollReveal from "@/components/ScrollReveal";
 import BannerModal from "@/components/BannerModal";
 import MagicBento from "@/components/MagicBento";
+import AlternatingText from "@/components/AlternatingText";
 // import LightRays from "@/components/LightRays"; // REMOVED
 import eyeqLogo from "@/assets/eyeq-logo.png";
 import { Instagram, Linkedin, Phone } from "lucide-react";
@@ -228,14 +229,17 @@ const Index = () => {
               {/* Content */}
               <div className="max-w-4xl mx-auto">
                 {/* Heading with Gradient Underline */}
-                <ScrollReveal animation="slide-up" delay={200} duration={900}>
-                  <div className="mb-8">
-                    <h2 className="text-5xl md:text-6xl font-bold mb-4 text-primary leading-tight">
-                      Empowering Visionaries in Computer Vision
-                    </h2>
+                <div className="mb-8">
+                  <AlternatingText
+                    text="Empowering Visionaries in Computer Vision"
+                    className="text-5xl md:text-6xl font-bold mb-4 text-primary leading-tight"
+                    delay={0.3}
+                    duration={0.8}
+                  />
+                  <ScrollReveal animation="scale" delay={800} duration={600}>
                     <div className="h-1 w-32 bg-gradient-to-r from-primary to-purple-500 rounded-full mx-auto"></div>
-                  </div>
-                </ScrollReveal>
+                  </ScrollReveal>
+                </div>
                 
                 {/* Mission Statement */}
                 <ScrollReveal animation="slide-up" delay={300} duration={900}>
@@ -336,14 +340,16 @@ const Index = () => {
 
           <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
             {features.map((feature, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-2xl font-bold text-left py-6 hover:no-underline">
-                  <span className="text-primary">{feature.title}</span>
-                </AccordionTrigger>
-                <AccordionContent className="text-foreground pb-6">
-                  {feature.description}
-                </AccordionContent>
-              </AccordionItem>
+              <ScrollReveal key={index} animation="slide-up" delay={index * 100} duration={700}>
+                <AccordionItem value={`item-${index}`}>
+                  <AccordionTrigger className="text-2xl font-bold text-left py-6 hover:no-underline">
+                    <span className="text-primary">{feature.title}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-foreground pb-6">
+                    {feature.description}
+                  </AccordionContent>
+                </AccordionItem>
+              </ScrollReveal>
             ))}
           </Accordion>
         </div>
@@ -394,30 +400,32 @@ const Index = () => {
                 },
               ].map((benefit, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <MagicBento
-                      textAutoHide={true}
-                      enableStars={true}
-                      enableSpotlight={true}
-                      enableBorderGlow={true}
-                      enableTilt={true}
-                      enableMagnetism={true}
-                      clickEffect={true}
-                      spotlightRadius={300}
-                      particleCount={12}
-                      glowColor="132, 0, 255"
-                      className="w-full h-[200px] bg-card border border-border shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl"
-                    >
-                      <div className="w-full h-full flex flex-col justify-center items-center text-center p-6">
-                        <h3 className="text-lg font-bold mb-3 text-primary leading-tight">
-                          {benefit.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {benefit.description}
-                        </p>
-                      </div>
-                    </MagicBento>
-                  </div>
+                  <ScrollReveal animation="scale" delay={index * 50} duration={600}>
+                    <div className="p-1">
+                      <MagicBento
+                        textAutoHide={true}
+                        enableStars={true}
+                        enableSpotlight={true}
+                        enableBorderGlow={true}
+                        enableTilt={true}
+                        enableMagnetism={true}
+                        clickEffect={true}
+                        spotlightRadius={300}
+                        particleCount={12}
+                        glowColor="132, 0, 255"
+                        className="w-full h-[200px] bg-card border border-border shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl"
+                      >
+                        <div className="w-full h-full flex flex-col justify-center items-center text-center p-6">
+                          <h3 className="text-lg font-bold mb-3 text-primary leading-tight">
+                            {benefit.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {benefit.description}
+                          </p>
+                        </div>
+                      </MagicBento>
+                    </div>
+                  </ScrollReveal>
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -462,23 +470,25 @@ const Index = () => {
             viewport={{ once: true, amount: 0.2 }}
           >
             {teamMembers.map((member, index) => (
-              <motion.div key={index} variants={itemVariants} className="bg-card border border-border rounded-lg shadow-lg p-8 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl transition-all duration-300">
-                <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-                  <div className="flex-1 flex flex-col justify-center">
-                    <h3 className="text-xl font-semibold text-primary mb-2">
-                      {member.name}
-                    </h3>
-                    <p className="text-muted-foreground text-sm font-medium mb-4">
-                      {member.role}
-                    </p>
-                    
-                    {/* Member Quote */}
-                    <p className="text-sm text-muted-foreground italic leading-relaxed">
-                      "{member.quote}"
-                    </p>
+              <ScrollReveal key={index} animation="slide-up" delay={index * 150} duration={700}>
+                <motion.div variants={itemVariants} className="bg-card border border-border rounded-lg shadow-lg p-8 hover:border-primary/50 hover:shadow-primary/20 hover:shadow-2xl transition-all duration-300">
+                  <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+                    <div className="flex-1 flex flex-col justify-center">
+                      <h3 className="text-xl font-semibold text-primary mb-2">
+                        {member.name}
+                      </h3>
+                      <p className="text-muted-foreground text-sm font-medium mb-4">
+                        {member.role}
+                      </p>
+                      
+                      {/* Member Quote */}
+                      <p className="text-sm text-muted-foreground italic leading-relaxed">
+                        "{member.quote}"
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </ScrollReveal>
             ))}
           </motion.div>
         </div>
