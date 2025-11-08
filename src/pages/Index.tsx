@@ -12,6 +12,7 @@ import Navbar from "@/components/Navbar";
 import { motion, Variants } from "framer-motion";
 import TeamMember from "@/components/TeamMember";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import CountUp from "@/components/CountUp";
 import {
   Accordion,
   AccordionContent,
@@ -250,19 +251,46 @@ const Index = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12 max-w-2xl mx-auto">
                   <AnimatedSection delay={100}>
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-primary mb-2">50+</div>
+                      <div className="text-4xl font-bold text-primary mb-2">
+                        <CountUp
+                          from={0}
+                          to={50}
+                          separator=","
+                          direction="up"
+                          duration={2}
+                          suffix="+"
+                        />
+                      </div>
                       <div className="text-sm text-muted-foreground">Active Members</div>
                     </div>
                   </AnimatedSection>
                   <AnimatedSection delay={300}>
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-primary mb-2">100+</div>
+                      <div className="text-4xl font-bold text-primary mb-2">
+                        <CountUp
+                          from={0}
+                          to={100}
+                          separator=","
+                          direction="up"
+                          duration={2}
+                          suffix="+"
+                        />
+                      </div>
                       <div className="text-sm text-muted-foreground">Real-World Projects</div>
                     </div>
                   </AnimatedSection>
                   <AnimatedSection delay={500}>
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-primary mb-2">10+</div>
+                      <div className="text-4xl font-bold text-primary mb-2">
+                        <CountUp
+                          from={0}
+                          to={10}
+                          separator=","
+                          direction="up"
+                          duration={2}
+                          suffix="+"
+                        />
+                      </div>
                       <div className="text-sm text-muted-foreground">Expert Mentors</div>
                     </div>
                   </AnimatedSection>
