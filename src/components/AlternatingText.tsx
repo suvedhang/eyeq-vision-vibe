@@ -59,10 +59,10 @@ const AlternatingText = ({
       {text.split('').map((char, index) => (
         <span
           key={index}
-          className="alt-letter inline-block"
+          className={`alt-letter ${char === '\n' ? 'block w-full' : 'inline-block'}`}
           style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
         >
-          {char}
+          {char === '\n' ? '' : char}
         </span>
       ))}
     </div>

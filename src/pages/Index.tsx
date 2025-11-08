@@ -231,7 +231,8 @@ const Index = () => {
                 {/* Heading with Gradient Underline */}
                 <div className="mb-8">
                   <AlternatingText
-                    text="Empowering Visionaries in Computer Vision"
+                    text="Empowering Visionaries in
+Computer Vision"
                     className="text-5xl md:text-6xl font-bold mb-4 text-primary leading-tight"
                     delay={0.3}
                     duration={0.8}
