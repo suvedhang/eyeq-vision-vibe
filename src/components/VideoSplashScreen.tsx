@@ -41,7 +41,7 @@ const VideoSplashScreen = ({ onVideoEnd }: VideoSplashScreenProps) => {
         muted
         playsInline
         onEnded={handleVideoEnd}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-contain"
       />
     </motion.div>
   );
