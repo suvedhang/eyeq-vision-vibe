@@ -55,12 +55,16 @@ const AlternatingText = ({
   }, [text, delay, duration]);
 
   return (
-    <div ref={containerRef} className={className}>
+    <div ref={containerRef} className={`${className} alternating-text-container`}>
       {text.split('').map((char, index) => (
         <span
           key={index}
           className={`alt-letter ${char === '\n' ? 'block w-full' : 'inline-block'}`}
-          style={{ whiteSpace: char === ' ' ? 'pre' : 'normal' }}
+          style={{ 
+            whiteSpace: char === ' ' ? 'pre' : 'normal',
+            wordBreak: 'normal',
+            overflowWrap: 'normal'
+          }}
         >
           {char === '\n' ? '' : char}
         </span>

@@ -5,7 +5,6 @@ import StarBorder from "@/components/StarBorder";
 import ScrollReveal from "@/components/ScrollReveal";
 import BannerModal from "@/components/BannerModal";
 import MagicBento from "@/components/MagicBento";
-import AlternatingText from "@/components/AlternatingText";
 // import LightRays from "@/components/LightRays"; // REMOVED
 import eyeqLogo from "@/assets/eyeq-logo.png";
 import { Instagram, Linkedin, Phone } from "lucide-react";
@@ -230,13 +229,9 @@ const Index = () => {
               <div className="max-w-4xl mx-auto">
                 {/* Heading with Gradient Underline */}
                 <div className="mb-8">
-                  <AlternatingText
-                    text="Empowering Visionaries in
-Computer Vision"
-                    className="text-5xl md:text-6xl font-bold mb-4 text-primary leading-tight"
-                    delay={0.3}
-                    duration={0.8}
-                  />
+                  <h1 className="text-5xl md:text-6xl font-bold mb-4 text-primary leading-tight">
+                    Empowering Visionaries in Computer Vision
+                  </h1>
                   <ScrollReveal animation="scale" delay={800} duration={600}>
                     <div className="h-1 w-32 bg-gradient-to-r from-primary to-purple-500 rounded-full mx-auto"></div>
                   </ScrollReveal>
