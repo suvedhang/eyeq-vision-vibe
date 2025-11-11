@@ -8,14 +8,21 @@ import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import VideoSplashScreen from "@/components/VideoSplashScreen";
+import WelcomeScreen from "@/components/WelcomeScreen";
 
 const queryClient = new QueryClient();
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [showWelcome, setShowWelcome] = useState(false);
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
+    setShowWelcome(true);
+  };
+
+  const handleWelcomeComplete = () => {
+    setShowWelcome(false);
   };
 
   useEffect(() => {
@@ -33,7 +40,8 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <AnimatePresence mode="wait">
         {isLoading && <VideoSplashScreen onVideoEnd={handleLoadingComplete} />}
-        {!isLoading && (
+        {showWelcome && <WelcomeScreen onComplete={handleWelcomeComplete} />}
+        {!isLoading && !showWelcome && (
           <TooltipProvider>
             <Toaster />
             <Sonner />
