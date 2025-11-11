@@ -27,15 +27,13 @@ const Navbar = ({ className }: NavbarProps) => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 py-3",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-md shadow-md"
-          : "bg-transparent",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 py-4",
+        "bg-transparent",
         className
       )}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-center">
-        <div className="flex items-center gap-6">
+        <div className="nav-button-container flex items-center gap-2 px-6 py-3 rounded-full border-2 border-white/20 bg-transparent backdrop-blur-md shadow-lg transition-all duration-300 hover:border-white/40 hover:shadow-xl">
           <Link to="home" smooth={true} duration={500}>
             <button className="nav-animated-button group">
               <div className="nav-outline"></div>
@@ -49,6 +47,7 @@ const Navbar = ({ className }: NavbarProps) => {
               </div>
             </button>
           </Link>
+          <div className="w-px h-8 bg-white/20"></div>
           <Link to="about" smooth={true} duration={500}>
             <button className="nav-animated-button group">
               <div className="nav-outline"></div>
@@ -63,6 +62,7 @@ const Navbar = ({ className }: NavbarProps) => {
               </div>
             </button>
           </Link>
+          <div className="w-px h-8 bg-white/20"></div>
           <Link to="contact" smooth={true} duration={500}>
             <button className="nav-animated-button group">
               <div className="nav-outline"></div>
