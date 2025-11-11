@@ -26,7 +26,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"; // Fixed path
-import { ModelBackground } from "@/components/ModelBackground"; // <-- ADDED
 
 interface ModalContent {
   title: string;
@@ -134,9 +133,6 @@ const Index = () => {
 
   return (
     <>
-      {/* This is your new 3D background */}
-      <ModelBackground />
-      
       {/* This is your main content wrapper */}
       <motion.div 
         className="min-h-screen bg-transparent text-foreground overflow-x-hidden relative" // <-- bg-background removed, relative added

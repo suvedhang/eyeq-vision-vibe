@@ -34,48 +34,50 @@ const Navbar = ({ className }: NavbarProps) => {
         className
       )}
     >
-      <div className="max-w-6xl mx-auto flex items-center justify-between">
-        <motion.div 
-          className="flex items-center gap-2"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <img 
-            src="/bg-logo.png" 
-            alt="EyeQ Logo" 
-            className="h-8 w-8 object-contain"
-          />
-          <span className="font-bold text-xl text-primary">EyeQ</span>
-        </motion.div>
-
-        <div className="hidden md:flex items-center gap-8">
+      <div className="max-w-6xl mx-auto flex items-center justify-center">
+        <div className="flex items-center gap-6">
           <Link to="home" smooth={true} duration={500}>
-            <motion.button 
-              className="text-foreground hover:text-primary transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Home
-            </motion.button>
+            <button className="nav-animated-button group">
+              <div className="nav-outline"></div>
+              <div className="nav-button-content">
+                <p className="nav-text">
+                  <span style={{ '--i': 0 } as React.CSSProperties}>H</span>
+                  <span style={{ '--i': 1 } as React.CSSProperties}>o</span>
+                  <span style={{ '--i': 2 } as React.CSSProperties}>m</span>
+                  <span style={{ '--i': 3 } as React.CSSProperties}>e</span>
+                </p>
+              </div>
+            </button>
           </Link>
           <Link to="about" smooth={true} duration={500}>
-            <motion.button 
-              className="text-foreground hover:text-primary transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              About
-            </motion.button>
+            <button className="nav-animated-button group">
+              <div className="nav-outline"></div>
+              <div className="nav-button-content">
+                <p className="nav-text">
+                  <span style={{ '--i': 0 } as React.CSSProperties}>A</span>
+                  <span style={{ '--i': 1 } as React.CSSProperties}>b</span>
+                  <span style={{ '--i': 2 } as React.CSSProperties}>o</span>
+                  <span style={{ '--i': 3 } as React.CSSProperties}>u</span>
+                  <span style={{ '--i': 4 } as React.CSSProperties}>t</span>
+                </p>
+              </div>
+            </button>
           </Link>
           <Link to="contact" smooth={true} duration={500}>
-            <motion.button 
-              className="text-foreground hover:text-primary transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Contact Us
-            </motion.button>
+            <button className="nav-animated-button group">
+              <div className="nav-outline"></div>
+              <div className="nav-button-content">
+                <p className="nav-text">
+                  <span style={{ '--i': 0 } as React.CSSProperties}>C</span>
+                  <span style={{ '--i': 1 } as React.CSSProperties}>o</span>
+                  <span style={{ '--i': 2 } as React.CSSProperties}>n</span>
+                  <span style={{ '--i': 3 } as React.CSSProperties}>t</span>
+                  <span style={{ '--i': 4 } as React.CSSProperties}>a</span>
+                  <span style={{ '--i': 5 } as React.CSSProperties}>c</span>
+                  <span style={{ '--i': 6 } as React.CSSProperties}>t</span>
+                </p>
+              </div>
+            </button>
           </Link>
         </div>
 
