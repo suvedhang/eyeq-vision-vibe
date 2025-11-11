@@ -137,16 +137,16 @@ const Index = () => {
       {/* Background Animation Layer (fixed, non-interfering) */}
       <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 0 }}>
         <PrismaticBurst
-          animationType="rotate3d"
+          animationType="hover"
           intensity={1.3}
-          speed={2}
+          speed={0.75}
           distort={10}
           paused={false}
           offset={{ x: 0, y: 0 }}
-          hoverDampness={0.64}
+          hoverDampness={1}
           rayCount={0}
           mixBlendMode="screen"
-          colors={["#ff007a", "#4d3dff", "#ffffff"]}
+          colors={["#8a8b9e", "#5e4469", "#7d8b78"]}
         />
       </div>
 
