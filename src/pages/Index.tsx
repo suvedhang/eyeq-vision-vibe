@@ -5,7 +5,6 @@ import StarBorder from "@/components/StarBorder";
 import ScrollReveal from "@/components/ScrollReveal";
 import BannerModal from "@/components/BannerModal";
 import MagicBento from "@/components/MagicBento";
-// import LightRays from "@/components/LightRays"; // REMOVED
 import eyeqLogo from "@/assets/eyeq-logo.png"; // Fixed path
 import { Instagram, Linkedin, Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -13,7 +12,6 @@ import { motion, Variants } from "framer-motion";
 import TeamMember from "@/components/TeamMember";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import CountUp from "@/components/CountUp";
-import PrismaticBurst from "@/components/PrismaticBurst";
 import {
   Accordion,
   AccordionContent,
@@ -134,22 +132,6 @@ const Index = () => {
 
   return (
     <>
-      {/* Background Animation Layer (fixed, non-interfering) */}
-      <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 0 }}>
-        <PrismaticBurst
-          animationType="hover"
-          intensity={1.3}
-          speed={0.75}
-          distort={10}
-          paused={false}
-          offset={{ x: 0, y: 0 }}
-          hoverDampness={1}
-          rayCount={0}
-          mixBlendMode="screen"
-          colors={["#8a8b9e", "#5e4469", "#7d8b78"]}
-        />
-      </div>
-
       {/* This is your main content wrapper */}
       <motion.div 
         className="min-h-screen bg-transparent text-foreground overflow-x-hidden relative"
@@ -590,7 +572,6 @@ const Index = () => {
             <ScrollReveal animation="fade" duration={800} delay={600}>
               <div className="mt-8 pt-8 border-t border-border text-center text-muted-foreground">
                 <p>© 2025 EyeQ Club. All rights reserved.</p>
-                <p className="mt-2 text-sm">Web developed by <a href="https://www.linkedin.com/in/gnana-priyan-g-b4a088389/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Gnana Priyan G</a></p>
               </div>
             </ScrollReveal>
           </div>
