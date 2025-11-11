@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
+import PrismaticPreview from "./pages/PrismaticPreview";
 import NotFound from "./pages/NotFound";
 import VideoSplashScreen from "@/components/VideoSplashScreen";
 
@@ -40,6 +41,7 @@ const App = () => {
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/prismatic" element={<PrismaticPreview />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

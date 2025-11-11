@@ -13,6 +13,7 @@ import { motion, Variants } from "framer-motion";
 import TeamMember from "@/components/TeamMember";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import CountUp from "@/components/CountUp";
+import PrismaticBurst from "@/components/PrismaticBurst";
 import {
   Accordion,
   AccordionContent,
@@ -133,10 +134,26 @@ const Index = () => {
 
   return (
     <>
+      {/* Background Animation Layer (fixed, non-interfering) */}
+      <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 0 }}>
+        <PrismaticBurst
+          animationType="rotate3d"
+          intensity={1.3}
+          speed={2}
+          distort={10}
+          paused={false}
+          offset={{ x: 0, y: 0 }}
+          hoverDampness={0.64}
+          rayCount={0}
+          mixBlendMode="screen"
+          colors={["#ff007a", "#4d3dff", "#ffffff"]}
+        />
+      </div>
+
       {/* This is your main content wrapper */}
       <motion.div 
-        className="min-h-screen bg-transparent text-foreground overflow-x-hidden relative" // <-- bg-background removed, relative added
-        style={{ zIndex: 1 }} // <-- ADDED to ensure content is on top
+        className="min-h-screen bg-transparent text-foreground overflow-x-hidden relative"
+        style={{ zIndex: 1 }}
         initial={{ opacity: 0 }}
         animate={showContent ? { opacity: 1 } : {}}
         transition={{ duration: 0.8 }}
