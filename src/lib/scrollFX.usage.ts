@@ -22,15 +22,6 @@ scrollFX.refresh();
 // Cleanup:
 scrollFX.destroy();
 
-// ============================================
-// DATA ATTRIBUTES - ADD TO YOUR HTML/JSX
-// ============================================
-
-/**
- * 1. HERO ENTRANCE (runs once on load)
- */
-
-// Hero title - splits to characters with stagger
 <h1 data-hero-title>EyeQ Vision</h1>
 
 // Hero subtitle - fades up after title
@@ -41,7 +32,6 @@ scrollFX.destroy();
   <button>Get Started</button>
 </div>
 
-// Optional: Override timing
 <h1 
   data-hero-title
   data-duration="0.8"
@@ -51,11 +41,6 @@ scrollFX.destroy();
   Custom Title
 </h1>
 
-/**
- * 2. SECTION REVEALS (trigger on scroll)
- */
-
-// Basic fade-up reveal
 <section data-reveal>
   Content fades up when entering viewport
 </section>

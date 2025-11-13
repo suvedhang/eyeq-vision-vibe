@@ -10,9 +10,10 @@ import MagicBento from "@/components/MagicBento";
 import Magnet from "@/components/Magnet";
 import ClickSpark from "@/components/ClickSpark";
 import { LiquidButton } from "@/components/ui/liquid-button";
-import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
+import { ProjectParallax } from "@/components/ProjectParallax";
+import { Spotlight } from "@/components/ui/spotlight";
 import { cn } from "@/lib/utils";
-import eyeqLogo from "@/assets/eyeq-logo.png"; // Fixed path
+import eyeqLogo from "@/assets/eyeq-logo.png"; 
 import Navbar from "@/components/Navbar";
 import { motion, Variants } from "framer-motion";
 import TeamMember from "@/components/TeamMember";
@@ -250,16 +251,6 @@ const Index = () => {
         sparkCount={8}
         duration={500}
       >
-        {/* Interactive Grid Pattern Background */}
-        <div className="fixed inset-0" style={{ zIndex: 0 }}>
-          <InteractiveGridPattern
-            className={cn(
-              "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
-              "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
-            )}
-          />
-        </div>
-
         {/* This is your main content wrapper */}
         <motion.div 
           className="min-h-screen bg-transparent text-foreground overflow-x-hidden relative"
@@ -280,8 +271,14 @@ const Index = () => {
 
         {/* Hero Section */}
         <Element name="home">
-        <section id="home" className="relative min-h-screen flex flex-col items-center justify-center px-4 z-10">
-          <div className="text-center">
+        <section id="home" className="relative min-h-screen flex flex-col items-center justify-center px-4 z-10 overflow-hidden">
+          {/* Spotlight Effect */}
+          <Spotlight
+            className="-top-40 left-0 md:-top-20 md:left-60"
+            fill="white"
+          />
+          
+          <div className="text-center relative z-10">
             <ScrollReveal animation="fade" delay={100} duration={900}>
               <div className="flex items-center justify-center gap-4 mb-8">
                 <h1 className="text-6xl md:text-8xl font-bold text-foreground">
@@ -326,10 +323,7 @@ const Index = () => {
 
         {/* Our Purpose Section */}
         <Element name="about">
-        <section id="about" className="relative py-32 px-4 z-10 overflow-hidden">
-          {/* Background Texture - Reduced opacity */}
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/2 to-transparent parallax"></div>
-          
+        <section id="about" className="relative py-32 px-4 z-10">
           <div className="max-w-7xl mx-auto relative">
             <ScrollReveal animation="fade" duration={800}>
               <div className="text-center">
@@ -343,8 +337,6 @@ const Index = () => {
                         className="w-80 h-80 object-contain hover:scale-105 transition-all duration-500 mx-auto hover-lift"
                       />
                     </ScrollReveal>
-                    {/* Reduced glowing effect */}
-                    <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl"></div>
                   </div>
                 </div>
                 
@@ -470,12 +462,24 @@ const Index = () => {
         </section>
         </Element>
 
+        {/* Project Parallax */}
+        <section className="relative py-20 px-4 z-10">
+          <div className="max-w-6xl mx-auto mb-16">
+            <ScrollReveal animation="fade" duration={800}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-primary">
+                MEMBERS PROJECT
+              </h2>
+            </ScrollReveal>
+            <ProjectParallax />
+          </div>
+        </section>
+
         {/* Student Benefits */}
         <section className="relative py-20 px-4 z-10">
           <div className="max-w-6xl mx-auto">
             <ScrollReveal>
               <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-primary">
-                Student Benefits
+                Student Benefitsn
               </h2>
             </ScrollReveal>
 
