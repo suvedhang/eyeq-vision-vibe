@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
 import { Link, Element } from "react-scroll";
+import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons";
+import { BellIcon, Share2Icon, Instagram, Linkedin, Phone } from "lucide-react";
 import RotatingText from "@/components/RotatingText";
 import StarBorder from "@/components/StarBorder";
 import ScrollReveal from "@/components/ScrollReveal";
 import BannerModal from "@/components/BannerModal";
 import MagicBento from "@/components/MagicBento";
+import Magnet from "@/components/Magnet";
+import ClickSpark from "@/components/ClickSpark";
+import { LiquidButton } from "@/components/ui/liquid-button";
+import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
+import { cn } from "@/lib/utils";
 import eyeqLogo from "@/assets/eyeq-logo.png"; // Fixed path
-import { Instagram, Linkedin, Phone } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { motion, Variants } from "framer-motion";
 import TeamMember from "@/components/TeamMember";
@@ -25,6 +31,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"; // Fixed path
+import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
+import { Marquee } from "@/components/ui/marquee";
+import { AnimatedList } from "@/components/ui/animated-list";
+import { AnimatedBeam } from "@/components/ui/animated-beam";
 
 interface ModalContent {
   title: string;
@@ -37,15 +47,11 @@ const Index = () => {
     title: "",
     description: "",
   });
-  const [showContent, setShowContent] = useState(false);
+  const [showContent, setShowContent] = useState(true); // Set to true for instant load
 
-  // Trigger content animation after component mounts
+  // Instant content display - no delay
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowContent(true);
-    }, 100); // Small delay to ensure smooth transition
-    
-    return () => clearTimeout(timer);
+    setShowContent(true);
   }, []);
 
   const openModal = (title: string, description: string) => {
@@ -53,26 +59,131 @@ const Index = () => {
     setModalOpen(true);
   };
 
-  const features = [
+  // Files for Marquee animation
+  const files = [
     {
-      title: "Anyone Can Teach One",
-      description:
-        "Every member is both a learner and a mentor. We grow together through curiosity, not hierarchy. At EyeQ, we believe everyone has something valuable to share, creating a collaborative learning environment where knowledge flows freely.",
+      name: "Project Showcase",
+      body: "Real-world computer vision projects built by our members.",
     },
     {
-      title: "No Skills Required",
-      description:
-        "Just the Spark to Start. We focus on helping every member build skills step by step. Whether you're a complete beginner or have some experience, EyeQ provides the support and resources you need to grow at your own pace.",
+      name: "Learning Resources",
+      body: "Curated tutorials, documentation, and research papers.",
     },
     {
-      title: "Curiosity Over Competition",
-      description:
-        "We start with 'what if?' instead of 'who's best?' Our sessions often start with fun prompts like, 'Can you make your laptop blink with Python?' This approach makes learning exciting and removes the pressure of competition.",
+      name: "Community Events",
+      body: "Hackathons, workshops, and collaborative coding sessions.",
     },
     {
-      title: "24/7 Energy Loop",
-      description:
-        "Some clubs stop after events. We don't. Our energy runs 24/7, from chat memes to late-night debugging sessions. The EyeQ community is always active, always learning, and always supporting each other.",
+      name: "Mentorship Program",
+      body: "One-on-one guidance from experienced developers.",
+    },
+    {
+      name: "Portfolio Building",
+      body: "Create impressive projects for your career.",
+    },
+  ];
+
+  // Features for BentoGrid
+  const bentoFeatures = [
+    {
+      Icon: FileTextIcon,
+      name: "Project-Based Learning",
+      description: "Learn by building real computer vision projects with hands-on experience.",
+      href: "#",
+      cta: "Learn more",
+      className: "col-span-3 md:col-span-1", // Full width on mobile, 1/3 on desktop
+      background: (
+        <Marquee
+          pauseOnHover
+          className="absolute top-10 [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] [--duration:20s]"
+        >
+          {files.map((f, idx) => (
+            <figure
+              key={idx}
+              className={cn(
+                "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
+                "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+                "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+                "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
+              )}
+            >
+              <div className="flex flex-row items-center gap-2">
+                <div className="flex flex-col">
+                  <figcaption className="text-sm font-medium dark:text-white">
+                    {f.name}
+                  </figcaption>
+                </div>
+              </div>
+              <blockquote className="mt-2 text-xs">{f.body}</blockquote>
+            </figure>
+          ))}
+        </Marquee>
+      ),
+    },
+    {
+      Icon: BellIcon,
+      name: "Community Events",
+      description: "Join hackathons, workshops, and collaborative coding sessions.",
+      href: "#",
+      cta: "Learn more",
+      className: "col-span-3 md:col-span-2", // Full width on mobile, 2/3 on desktop
+      background: (
+        <div className="absolute top-6 right-4 h-[300px] w-[calc(100%-2rem)] scale-90 border-none [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-95">
+          <AnimatedList className="space-y-4">
+            <div className="bg-primary/10 p-5 rounded-lg shadow-sm">
+              <h4 className="font-bold text-primary mb-1">Weekly Coding Session</h4>
+              <p className="text-sm text-muted-foreground">Every Saturday 6PM IST</p>
+            </div>
+            <div className="bg-secondary/10 p-5 rounded-lg shadow-sm">
+              <h4 className="font-bold text-secondary mb-1">Project Showcase</h4>
+              <p className="text-sm text-muted-foreground">Monthly Demo Day</p>
+            </div>
+            <div className="bg-accent/10 p-5 rounded-lg shadow-sm">
+              <h4 className="font-bold text-accent-foreground mb-1">Guest Lecture</h4>
+              <p className="text-sm text-muted-foreground">Industry Expert Talk</p>
+            </div>
+          </AnimatedList>
+        </div>
+      ),
+    },
+    {
+      Icon: Share2Icon,
+      name: "Collaborative Network",
+      description: "Connect with peers and mentors in our vibrant community.",
+      href: "#",
+      cta: "Learn more",
+      className: "col-span-3 md:col-span-2", // Full width on mobile, 2/3 on desktop
+      background: (
+        <div className="absolute top-6 right-4 h-[300px] w-[calc(100%-2rem)] border-none [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-105">
+          <AnimatedBeam className="w-full h-full">
+            <div className="flex justify-between items-center h-full px-10">
+              <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-lg">You</div>
+              <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center text-white font-bold shadow-md">M1</div>
+              <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-accent-foreground font-bold shadow-md">M2</div>
+              <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center text-muted-foreground font-bold shadow-md">M3</div>
+            </div>
+          </AnimatedBeam>
+        </div>
+      ),
+    },
+    {
+      Icon: CalendarIcon,
+      name: "Learning Path",
+      description: "Structured curriculum from basics to advanced computer vision.",
+      className: "col-span-3 md:col-span-1", // Full width on mobile, 1/3 on desktop
+      href: "#",
+      cta: "Learn more",
+      background: (
+        <div className="absolute top-12 right-4 origin-top scale-90 rounded-md border p-2 [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-95">
+          <div className="p-5 text-center">
+            <div className="text-sm font-medium mb-3 text-muted-foreground">Today</div>
+            <div className="text-3xl font-bold mb-1">{new Date().getDate()}</div>
+            <div className="text-sm text-muted-foreground">
+              {new Date().toLocaleString('default', { month: 'short' })}
+            </div>
+          </div>
+        </div>
+      ),
     },
   ];
 
@@ -132,14 +243,31 @@ const Index = () => {
 
   return (
     <>
-      {/* This is your main content wrapper */}
-      <motion.div 
-        className="min-h-screen bg-transparent text-foreground overflow-x-hidden relative"
-        style={{ zIndex: 1 }}
-        initial={{ opacity: 0 }}
-        animate={showContent ? { opacity: 1 } : {}}
-        transition={{ duration: 0.8 }}
+      <ClickSpark
+        sparkColor='#8400ff'
+        sparkSize={10}
+        sparkRadius={20}
+        sparkCount={8}
+        duration={500}
       >
+        {/* Interactive Grid Pattern Background */}
+        <div className="fixed inset-0" style={{ zIndex: 0 }}>
+          <InteractiveGridPattern
+            className={cn(
+              "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
+              "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
+            )}
+          />
+        </div>
+
+        {/* This is your main content wrapper */}
+        <motion.div 
+          className="min-h-screen bg-transparent text-foreground overflow-x-hidden relative"
+          style={{ zIndex: 1 }}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
         {/* Navigation Bar */}
         <Navbar />
         
@@ -180,23 +308,15 @@ const Index = () => {
             </ScrollReveal>
             <ScrollReveal animation="slide-up" delay={500} duration={800}>
               <div className="mt-10 flex flex-wrap justify-center gap-4">
-                <Link to="about" smooth={true} duration={500} className="hover-lift cursor-pointer">
-                  <motion.button 
-                    className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
+                <Link to="about" smooth={true} duration={500} className="cursor-pointer">
+                  <LiquidButton size="lg" variant="default">
                     Learn More
-                  </motion.button>
+                  </LiquidButton>
                 </Link>
-                <Link to="features" smooth={true} duration={500} className="hover-lift cursor-pointer">
-                  <motion.button 
-                    className="px-8 py-3 bg-secondary text-secondary-foreground rounded-lg font-medium hover:bg-secondary/90 transition-all"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
+                <Link to="features" smooth={true} duration={500} className="cursor-pointer">
+                  <LiquidButton size="lg" variant="secondary">
                     Explore
-                  </motion.button>
+                  </LiquidButton>
                 </Link>
               </div>
             </ScrollReveal>
@@ -302,19 +422,21 @@ const Index = () => {
                   {/* Call to Action */}
                   <ScrollReveal animation="slide-up" delay={500} duration={900}>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <a 
-                        href="https://chat.whatsapp.com/GxFFprWNX4d8mOQJOTz7d1"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25 inline-block text-center"
-                      >
-                        Join Now
-                      </a>
-                      <a 
+                      <Magnet padding={100} disabled={false} magnetStrength={2}>
+                        <a
+                          href="https://chat.whatsapp.com/GxFFprWNX4d8mOQJOTz7d1"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-all hover:scale-105 inline-block text-center"
+                        >
+                          Join Now
+                        </a>
+                      </Magnet>
+                      <a
                         href="https://docs.google.com/spreadsheets/d/1EVvQ9yxCOn4SqQX_twvwdRS9951wn6fNcUI7PZdMxYQ/edit?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105 inline-block text-center"
+                        className="border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-all hover:scale-105 inline-block text-center"
                       >
                         See Our Projects
                       </a>
@@ -337,20 +459,13 @@ const Index = () => {
               </h2>
             </ScrollReveal>
 
-            <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
-              {features.map((feature, index) => (
-                <ScrollReveal key={index} animation="slide-up" delay={index * 100} duration={700}>
-                  <AccordionItem value={`item-${index}`}>
-                    <AccordionTrigger className="text-2xl font-bold text-left py-6 hover:no-underline">
-                      <span className="text-primary">{feature.title}</span>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-foreground pb-6">
-                      {feature.description}
-                    </AccordionContent>
-                  </AccordionItem>
-                </ScrollReveal>
-              ))}
-            </Accordion>
+            <div className="mb-16">
+              <BentoGrid>
+                {bentoFeatures.map((feature, idx) => (
+                  <BentoCard key={idx} {...feature} />
+                ))}
+              </BentoGrid>
+            </div>
           </div>
         </section>
         </Element>
@@ -585,6 +700,7 @@ const Index = () => {
           description={modalContent.description}
         />
       </motion.div>
+      </ClickSpark>
     </>
   );
 };
