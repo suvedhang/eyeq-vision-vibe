@@ -17,6 +17,7 @@ interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   description: string
   href: string
   cta: string
+  onCTAClick?: () => void
 }
 
 const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
@@ -41,6 +42,7 @@ const BentoCard = ({
   description,
   href,
   cta,
+  onCTAClick,
   ...props
 }: BentoCardProps) => (
   <div
@@ -74,14 +76,22 @@ const BentoCard = ({
       >
         <Button
           variant="link"
-          asChild
+          asChild={!!href && !onCTAClick}
           size="sm"
           className="pointer-events-auto p-0 text-white"
+          onClick={onCTAClick}
         >
-          <a href={href}>
-            {cta}
-            <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
-          </a>
+          {href && !onCTAClick ? (
+            <a href={href}>
+              {cta}
+              <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
+            </a>
+          ) : (
+            <>
+              {cta}
+              <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
+            </>
+          )}
         </Button>
       </div>
     </div>
@@ -93,14 +103,22 @@ const BentoCard = ({
     >
       <Button
         variant="link"
-        asChild
+        asChild={!!href && !onCTAClick}
         size="sm"
         className="pointer-events-auto p-0 text-white"
+        onClick={onCTAClick}
       >
-        <a href={href}>
-          {cta}
-          <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
-        </a>
+        {href && !onCTAClick ? (
+          <a href={href}>
+            {cta}
+            <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
+          </a>
+        ) : (
+          <>
+            {cta}
+            <ArrowRightIcon className="ms-2 h-4 w-4 rtl:rotate-180" />
+          </>
+        )}
       </Button>
     </div>
 
